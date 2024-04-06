@@ -20,6 +20,36 @@
     <audio controls>
   <source src="soundtrack2.mp3" type="audio/mpeg">
 </audio>
+    <audio id="soundtrack" controls>
+  <source src="soundtrack.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<audio id="soundtrack1" controls>
+  <source src="soundtrack1.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+    <audio id="soundtrack2" controls>
+  <source src="soundtrack2.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+    <script>
+  // Get all audio elements
+  var audioElements = document.querySelectorAll('audio');
+
+  // Add event listeners to each audio element
+  audioElements.forEach(function(audio) {
+    audio.addEventListener('play', function() {
+      // Pause all other audio elements
+      audioElements.forEach(function(otherAudio) {
+        if (otherAudio !== audio && !otherAudio.paused) {
+          otherAudio.pause();
+        }
+      });
+    });
+  });
+</script>
+    
     <div class="slideshow-container">
         <div class="mySlides fade">
             <img src="image1.jpg" style="width:50%">
